@@ -1,4 +1,4 @@
-package obligatrio.grafica.ventanas;
+package obligatorio.grafica.ventanas;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;

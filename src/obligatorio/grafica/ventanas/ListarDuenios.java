@@ -1,4 +1,4 @@
-package obligatrio.grafica.ventanas;
+package obligatorio.grafica.ventanas;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;

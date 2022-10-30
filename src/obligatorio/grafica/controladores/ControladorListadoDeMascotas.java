@@ -1,13 +1,14 @@
 package obligatorio.grafica.controladores;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
+import obligatorio.grafica.ventanas.ListarMascotaDeUnDuenio;
 import obligatorio.logica.ICertamenes;
 import obligatorio.logica.excepciones.DuenioException;
 import obligatorio.logica.excepciones.PersistenciaException;
 import obligatorio.logica.valueObjects.VOMascotaList;
-import obligatrio.grafica.ventanas.ListarMascotaDeUnDuenio;
 
 public class ControladorListadoDeMascotas {
 	ListarMascotaDeUnDuenio ventana;
@@ -20,7 +21,7 @@ public class ControladorListadoDeMascotas {
 	}
 	
 	public List<VOMascotaList> listarMascotasDuenio(int cedula) {
-		List<VOMascotaList> mascotas = null;
+		List<VOMascotaList> mascotas = new ArrayList<>();
 		boolean hayError = false;
 		String msg = null;
 		

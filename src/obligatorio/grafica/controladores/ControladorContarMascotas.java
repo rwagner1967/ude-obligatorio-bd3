@@ -2,10 +2,10 @@ package obligatorio.grafica.controladores;
 
 import java.rmi.RemoteException;
 
+import obligatorio.grafica.ventanas.ContarMascotas;
 import obligatorio.logica.ICertamenes;
 import obligatorio.logica.excepciones.DuenioException;
 import obligatorio.logica.excepciones.PersistenciaException;
-import obligatrio.grafica.ventanas.ContarMascotas;
 
 public class ControladorContarMascotas {
 	private ContarMascotas ventana;

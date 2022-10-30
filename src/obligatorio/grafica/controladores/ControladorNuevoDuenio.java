@@ -2,11 +2,11 @@ package obligatorio.grafica.controladores;
 
 import java.rmi.RemoteException;
 
+import obligatorio.grafica.ventanas.NuevoDuenio;
 import obligatorio.logica.ICertamenes;
 import obligatorio.logica.excepciones.DuenioException;
 import obligatorio.logica.excepciones.PersistenciaException;
 import obligatorio.logica.valueObjects.VODuenio;
-import obligatrio.grafica.ventanas.NuevoDuenio;
 
 public class ControladorNuevoDuenio {
 	private NuevoDuenio nd;

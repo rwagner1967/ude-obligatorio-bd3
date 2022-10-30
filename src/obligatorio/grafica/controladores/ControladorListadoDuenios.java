@@ -4,10 +4,10 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
+import obligatorio.grafica.ventanas.ListarDuenios;
 import obligatorio.logica.ICertamenes;
 import obligatorio.logica.excepciones.PersistenciaException;
 import obligatorio.logica.valueObjects.VODuenio;
-import obligatrio.grafica.ventanas.ListarDuenios;
 
 public class ControladorListadoDuenios {
 	ListarDuenios ld;

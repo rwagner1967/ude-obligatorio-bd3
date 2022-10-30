@@ -2,11 +2,11 @@ package obligatorio.grafica.controladores;
 
 import java.rmi.RemoteException;
 
+import obligatorio.grafica.ventanas.NuevaMascota;
 import obligatorio.logica.ICertamenes;
 import obligatorio.logica.excepciones.DuenioException;
 import obligatorio.logica.excepciones.PersistenciaException;
 import obligatorio.logica.valueObjects.VOMascota;
-import obligatrio.grafica.ventanas.NuevaMascota;
 
 public class ControladorNuevaMascota {
 	private NuevaMascota nm;
