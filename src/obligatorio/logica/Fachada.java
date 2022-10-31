@@ -17,7 +17,6 @@ import obligatorio.logica.valueObjects.VOMascotaList;
 import obligatorio.persistencia.FabricaAbstracta;
 import obligatorio.persistencia.IConexion;
 import obligatorio.persistencia.IPoolConexiones;
-import obligatorio.persistencia.PoolConexiones;
 import obligatorio.persistencia.daos.IDAODuenios;
 
 public class Fachada {
@@ -35,13 +34,13 @@ public class Fachada {
 			nomFab = p.getProperty("nomfab");
 			FabricaAbstracta fabrica = (FabricaAbstracta) Class.forName(nomFab).getDeclaredConstructor().newInstance();
 			dicDuenios = fabrica.crearIDAODuenios();
+			pool = fabrica.crearIPoolConexiones();
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException | ClassNotFoundException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new PersistenciaException("error de acceso a datos");
 		}
-		pool = new PoolConexiones();
 	}
 
 	public void nuevoDuenio(VODuenio voD) throws PersistenciaException, DuenioException {

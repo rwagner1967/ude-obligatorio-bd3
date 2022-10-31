@@ -15,8 +15,12 @@ public class FabricaMySQL implements FabricaAbstracta {
 
 	@Override
 	public IDAOMascotas crearIDAOMascotas(int cedDuenio) throws PersistenciaException {
-		// TODO Auto-generated method stub
 		return new DAOMascotas(cedDuenio);
+	}
+
+	@Override
+	public IPoolConexiones crearIPoolConexiones() throws PersistenciaException {
+		return new PoolConexiones();
 	}
 
 }

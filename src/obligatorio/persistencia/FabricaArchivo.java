@@ -16,8 +16,12 @@ public class FabricaArchivo implements FabricaAbstracta {
 
 	@Override
 	public IDAOMascotas crearIDAOMascotas(int cedDuenio) throws PersistenciaException {
-		// TODO Auto-generated method stub
 		return new DAOMascotasArchivo(cedDuenio);
+	}
+
+	@Override
+	public IPoolConexiones crearIPoolConexiones() throws PersistenciaException {
+		return new PoolConexionesArchivo();
 	}
 
 }
