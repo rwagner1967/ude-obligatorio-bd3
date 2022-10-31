@@ -50,7 +50,7 @@ public class Fachada {
 		boolean errorPersistencia = false;
 		try {
 			icon = pool.obtenerConexion(true);
-			existsCed = dicDuenios.memeber(icon, voD.getCedula());
+			existsCed = dicDuenios.member(icon, voD.getCedula());
 			if (!existsCed) {
 				Duenio due = new Duenio(voD.getCedula(), voD.getNombre(), voD.getApellido());
 				dicDuenios.insert(icon, due);
@@ -85,7 +85,7 @@ public class Fachada {
 
 		try {
 			icon = pool.obtenerConexion(true);
-			existsCed = dicDuenios.memeber(icon, cedula);
+			existsCed = dicDuenios.member(icon, cedula);
 			if (existsCed) {
 				Duenio due = dicDuenios.find(icon, cedula);
 				Mascota mascota = new Mascota(0, voM.getApodo(), voM.getRaza());
@@ -122,7 +122,7 @@ public class Fachada {
 
 		try {
 			icon = pool.obtenerConexion(true);
-			existsCed = dicDuenios.memeber(icon, cedula);
+			existsCed = dicDuenios.member(icon, cedula);
 			if (existsCed) {
 				Duenio due = dicDuenios.find(icon, cedula);
 				due.borrarMascotas(icon);
@@ -188,7 +188,7 @@ public class Fachada {
 
 		try {
 			icon = pool.obtenerConexion(true);
-			existsCed = dicDuenios.memeber(icon, cedula);
+			existsCed = dicDuenios.member(icon, cedula);
 			if (existsCed) {
 				Duenio due = dicDuenios.find(icon, cedula);
 				mascotas = due.listarMascotas(icon);
@@ -225,7 +225,7 @@ public class Fachada {
 
 		try {
 			icon = pool.obtenerConexion(true);
-			existsCed = dicDuenios.memeber(icon, cedula);
+			existsCed = dicDuenios.member(icon, cedula);
 			if (existsCed) {
 				Duenio due = dicDuenios.find(icon, cedula);
 				voM = due.obtenerMascota(icon, numInscripcion);
@@ -262,7 +262,7 @@ public class Fachada {
 
 		try {
 			icon = pool.obtenerConexion(true);
-			existsCed = dicDuenios.memeber(icon, cedula);
+			existsCed = dicDuenios.member(icon, cedula);
 			if (existsCed) {
 				Duenio due = dicDuenios.find(icon, cedula);
 				cantidad = due.contarMascotas(icon, raza);

@@ -19,7 +19,7 @@ public class DAODuenios implements IDAODuenios {
 	public DAODuenios() throws PersistenciaException {
 	}
 
-	public boolean memeber(IConexion icon, int ced) throws PersistenciaException {
+	public boolean member(IConexion icon, int ced) throws PersistenciaException {
 		PreparedStatement pstmt = null;
 		Consultas consultas = new Consultas();
 		ResultSet rs = null;

@@ -10,7 +10,7 @@ import obligatorio.persistencia.IConexion;
 public class DAODueniosArchivo implements IDAODuenios {
 
 	@Override
-	public boolean memeber(IConexion icon, int ced) throws PersistenciaException {
+	public boolean member(IConexion icon, int ced) throws PersistenciaException {
 		// TODO Auto-generated method stub
 		return false;
 	}
