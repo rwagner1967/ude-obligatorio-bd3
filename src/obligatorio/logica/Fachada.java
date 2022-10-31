@@ -1,8 +1,12 @@
 package obligatorio.logica;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import obligatorio.logica.excepciones.DuenioException;
 import obligatorio.logica.excepciones.MascotaRegistradaException;
@@ -10,17 +14,33 @@ import obligatorio.logica.excepciones.PersistenciaException;
 import obligatorio.logica.valueObjects.VODuenio;
 import obligatorio.logica.valueObjects.VOMascota;
 import obligatorio.logica.valueObjects.VOMascotaList;
+import obligatorio.persistencia.FabricaAbstracta;
 import obligatorio.persistencia.IConexion;
 import obligatorio.persistencia.IPoolConexiones;
 import obligatorio.persistencia.PoolConexiones;
-import obligatorio.persistencia.daos.DAODuenios;
+import obligatorio.persistencia.daos.IDAODuenios;
 
 public class Fachada {
-	DAODuenios dicDuenios;
+	IDAODuenios dicDuenios;
 	private IPoolConexiones pool;
 
 	public Fachada() throws PersistenciaException {
-		dicDuenios = new DAODuenios();
+		//String nomFab = "obligatorio.persistencia.FabricaMySQL";
+		String nomFab = null;
+		Properties p = new Properties();
+		String nomArchivo = "config/datos.properties";
+
+		try {
+			p.load(new FileInputStream(nomArchivo));
+			nomFab = p.getProperty("nomfab");
+			FabricaAbstracta fabrica = (FabricaAbstracta) Class.forName(nomFab).getDeclaredConstructor().newInstance();
+			dicDuenios = fabrica.crearIDAODuenios();
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
+				| NoSuchMethodException | SecurityException | ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new PersistenciaException("error de acceso a datos");
+		}
 		pool = new PoolConexiones();
 	}
 
@@ -240,7 +260,7 @@ public class Fachada {
 		int cantidad = 0;
 		IConexion icon = null;
 		boolean errorPersistencia = false;
-		
+
 		try {
 			icon = pool.obtenerConexion(true);
 			existsCed = dicDuenios.memeber(icon, cedula);

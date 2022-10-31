@@ -8,12 +8,13 @@ import obligatorio.logica.valueObjects.VOMascota;
 import obligatorio.logica.valueObjects.VOMascotaList;
 import obligatorio.persistencia.IConexion;
 import obligatorio.persistencia.daos.DAOMascotas;
+import obligatorio.persistencia.daos.IDAOMascotas;
 
 public class Duenio {
 	private int cedula;
 	private String nombre;
 	private String apellido;
-	private DAOMascotas secuencia;
+	private IDAOMascotas secuencia;
 	
 	public Duenio(int cedula, String nombre, String apellido) throws PersistenciaException {
 		super();

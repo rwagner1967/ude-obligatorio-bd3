@@ -14,7 +14,7 @@ import obligatorio.persistencia.Conexion;
 import obligatorio.persistencia.IConexion;
 import obligatorio.persistencia.consultas.Consultas;
 
-public class DAODuenios {
+public class DAODuenios implements IDAODuenios {
 
 	public DAODuenios() throws PersistenciaException {
 	}

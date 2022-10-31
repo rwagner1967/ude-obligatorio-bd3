@@ -14,7 +14,7 @@ import obligatorio.persistencia.Conexion;
 import obligatorio.persistencia.IConexion;
 import obligatorio.persistencia.consultas.Consultas;
 
-public class DAOMascotas {
+public class DAOMascotas implements IDAOMascotas {
 	private int cedDuenio;
 
 	public DAOMascotas(int cedDuenio) throws PersistenciaException {
