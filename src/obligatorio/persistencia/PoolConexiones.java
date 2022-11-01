@@ -23,7 +23,7 @@ public class PoolConexiones implements IPoolConexiones {
 	public PoolConexiones() throws PersistenciaException {
 		super();
 		conexiones = new Conexion[MAX_CANT_CONEXIONES];
-		nivelTransaccionalidad = Connection.TRANSACTION_REPEATABLE_READ;
+		nivelTransaccionalidad = Connection.TRANSACTION_SERIALIZABLE;
 		Properties p = new Properties();
 		String nomArchivo = "config/datos.properties";
 

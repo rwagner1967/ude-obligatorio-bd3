@@ -108,6 +108,8 @@ public class DAODuenios implements IDAODuenios {
 				String apellido = rs.getString("apellido");
 				due = new Duenio(cedula, nombre, apellido);
 			}
+			rs.close();
+			rs = null;
 			pstmt.close();
 			pstmt = null;
 		} catch (SQLException e) {
@@ -115,6 +117,15 @@ public class DAODuenios implements IDAODuenios {
 			errorPersistencia = true;
 			msg = "Error de acceso a los datos";
 		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					errorPersistencia = true;
+					msg = "Error de acceso a los datos";				
+				}
+			}			
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -124,6 +135,7 @@ public class DAODuenios implements IDAODuenios {
 					msg = "Error de acceso a los datos";				
 				}
 			}
+			
 			if (errorPersistencia) {
 				throw new PersistenciaException(msg);
 			}
