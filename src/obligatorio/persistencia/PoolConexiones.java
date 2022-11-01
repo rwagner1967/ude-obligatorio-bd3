@@ -38,7 +38,6 @@ public class PoolConexiones implements IPoolConexiones {
 			e.printStackTrace();
 			throw new PersistenciaException("No pudo abrir archivo de propiedades");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new PersistenciaException("No pudo obtener driver");
 		}
@@ -57,13 +56,10 @@ public class PoolConexiones implements IPoolConexiones {
 			} else if (creadas < MAX_CANT_CONEXIONES) {
 				Connection c = null;
 				c = DriverManager.getConnection(url, user, password);
-				//c.setTransactionIsolation(nivelTransaccionalidad);
-				//c.setAutoCommit(false);
 				con = new Conexion(c);
 				creadas++;
 				fin=true;
 			} else {
-				System.out.println("Wait");
 				wait();
 			}
 		}
@@ -82,7 +78,6 @@ public class PoolConexiones implements IPoolConexiones {
 		}
 		conexiones[tope] = (Conexion) con;
 		tope++;
-		System.out.println("Notify");
 		notify();
 	}
 }
