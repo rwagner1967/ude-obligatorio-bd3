@@ -1,5 +1,14 @@
 package obligatorio.persistencia.daos;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 import obligatorio.logica.Mascota;
@@ -17,8 +26,18 @@ public class DAOMascotasArchivo implements IDAOMascotas {
 	}
 	@Override
 	public void insback(IConexion icon, Mascota mascota) throws PersistenciaException {
-		// TODO Auto-generated method stub
+		try {
+			String nomArch = "datos/mascotas-" + cedDuenio + ".txt";
+			FileOutputStream archivo = new FileOutputStream(nomArch);
+			ObjectOutputStream canalDeSalida = new ObjectOutputStream(archivo);
+			canalDeSalida.writeObject(mascota);
+			canalDeSalida.close();
+			archivo.close();
 
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("error de acceso a los datos");
+		}
 	}
 
 	@Override
@@ -35,19 +54,37 @@ public class DAOMascotasArchivo implements IDAOMascotas {
 
 	@Override
 	public List<VOMascotaList> listarMascotas(IConexion icon) throws PersistenciaException {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<VOMascotaList> listaMascotas = new ArrayList<>();
+		//No estoy muy seguro con esta solucion
+		/*String nomArch = "datos/duenio-" + cedDuenio + ".txt";
+		try {
+			FileInputStream archivo = new FileInputStream(nomArch);
+			ObjectInputStream canalDeEntrada = new ObjectInputStream(archivo);
+			listaMascotas = (ArrayList<VOMascotaList>) canalDeEntrada.readObject();
+			canalDeEntrada.close();
+			}
+		catch(IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("error de acceso a los datos");
+		}*/
+		return listaMascotas;
 	}
 
 	@Override
 	public void borrarMascotas(IConexion icon) throws PersistenciaException {
-		// TODO Auto-generated method stub
+		String nomArch = "datos/mascotas-" + cedDuenio + ".txt";
+		Path path = (Path) FileSystems.getDefault().getPath(nomArch);
+		try {
+			Files.delete((java.nio.file.Path) path);
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("error de acceso a los datos");
+		}
 
 	}
 
 	@Override
 	public int contarMascotas(IConexion icon, String raza) throws PersistenciaException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
