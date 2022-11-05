@@ -92,7 +92,7 @@ public class VentanaPrincipal extends JFrame {
 		JMenuItem nuevoDuenio = new JMenuItem("Nuevo Dueño");
 		JMenuItem nuevaMascota = new JMenuItem("Nueva Mascota");
 		JMenuItem borrarDuenio = new JMenuItem("Borrar Dueño");
-		JMenuItem listarDuenios = new JMenuItem("Listar Duenios");
+		JMenuItem listarDuenios = new JMenuItem("Listar Dueños");
 		JMenuItem listarMascotasDuenio = new JMenuItem("Listar mascotas de un dueño");
 		JMenuItem obtenerMascota = new JMenuItem("Obtener Mascota");
 		JMenuItem contarMascotas = new JMenuItem("Contar Mascotas");

@@ -1,6 +1,7 @@
 package obligatorio.persistencia.daos;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,6 +10,9 @@ import java.io.ObjectOutputStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import obligatorio.logica.Duenio;
 import obligatorio.logica.excepciones.PersistenciaException;
@@ -76,24 +80,45 @@ public class DAODueniosArchivo implements IDAODuenios {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new PersistenciaException("error de acceso a los datos");
-		}	
+		}
 	}
 
 	@Override
 	public List<VODuenio> listarDuenios(IConexion icon) throws PersistenciaException {
-		
+		ArrayList<VODuenio> listDue = new ArrayList<>();
 		File directorio = new File("datos");
+
 		File[] listaArchivos = directorio.listFiles();
 
 		for (int i = 0; i < listaArchivos.length; i++) {
-		  if (listaArchivos[i].isFile()) {
-		    System.out.println("File " + listaArchivos[i].getName());
-		  } else if (listaArchivos[i].isDirectory()) {
-		    System.out.println("Directory " + listaArchivos[i].getName());
-		  }
+			if (listaArchivos[i].isFile()) {
+				if (listaArchivos[i].getName().matches("duenio-.*[.]txt")) {
+					FileInputStream archivo;
+					try {
+						archivo = new FileInputStream(listaArchivos[i]);
+						ObjectInputStream canalDeEntrada = new ObjectInputStream(archivo);
+						VODuenio voDuenioArchivo = (VODuenio) canalDeEntrada.readObject();
+						listDue.add(voDuenioArchivo);
+						archivo.close();
+					} catch (IOException | ClassNotFoundException e) {
+						e.printStackTrace();
+						throw new PersistenciaException("error de acceso a los datos");
+					}
+				}
+			}
 		}
-							
-		return null;
-	}
+		Collections.sort(listDue, new Comparator<VODuenio>() {
 
+			@Override
+			public int compare(VODuenio arg0, VODuenio arg1) {
+				int salida = 0;
+				if (arg0.getCedula() < arg1.getCedula())
+					salida = -1;
+				else if (arg0.getCedula() > arg1.getCedula())
+					salida = 1;
+				return salida;
+			}
+		});
+		return listDue;
+	}
 }

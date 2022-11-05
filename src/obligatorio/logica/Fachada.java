@@ -30,7 +30,7 @@ public class Fachada {
 		boolean existsCed = false;
 		boolean errorPersistencia = false;
 		try {
-			icon = pool.obtenerConexion(true);
+			icon = pool.obtenerConexion(false);
 			existsCed = dicDuenios.member(icon, voD.getCedula());
 			if (!existsCed) {
 				Duenio due = new Duenio(voD.getCedula(), voD.getNombre(), voD.getApellido());
@@ -65,7 +65,7 @@ public class Fachada {
 		boolean errorPersistencia = false;
 
 		try {
-			icon = pool.obtenerConexion(true);
+			icon = pool.obtenerConexion(false);
 			existsCed = dicDuenios.member(icon, cedula);
 			if (existsCed) {
 				Duenio due = dicDuenios.find(icon, cedula);
@@ -102,7 +102,7 @@ public class Fachada {
 		IConexion icon = null;
 
 		try {
-			icon = pool.obtenerConexion(true);
+			icon = pool.obtenerConexion(false);
 			existsCed = dicDuenios.member(icon, cedula);
 			if (existsCed) {
 				Duenio due = dicDuenios.find(icon, cedula);
