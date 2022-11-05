@@ -6,8 +6,8 @@ import obligatorio.logica.excepciones.MascotaRegistradaException;
 import obligatorio.logica.excepciones.PersistenciaException;
 import obligatorio.logica.valueObjects.VOMascota;
 import obligatorio.logica.valueObjects.VOMascotaList;
+import obligatorio.persistencia.FabricaAbstracta;
 import obligatorio.persistencia.IConexion;
-import obligatorio.persistencia.daos.DAOMascotas;
 import obligatorio.persistencia.daos.IDAOMascotas;
 
 public class Duenio {
@@ -21,7 +21,9 @@ public class Duenio {
 		this.cedula = cedula;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.secuencia = new DAOMascotas(cedula);
+		
+		FabricaAbstracta fabrica = Fabrica.getInstance().getFabrica();
+		this.secuencia = fabrica.crearIDAOMascotas(cedula);
 	}
 
 	public int getCedula() {

@@ -1,13 +1,8 @@
 package obligatorio.logica;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
-
 import obligatorio.logica.excepciones.DuenioException;
 import obligatorio.logica.excepciones.MascotaRegistradaException;
 import obligatorio.logica.excepciones.PersistenciaException;
@@ -24,23 +19,9 @@ public class Fachada {
 	private IPoolConexiones pool;
 
 	public Fachada() throws PersistenciaException {
-		//String nomFab = "obligatorio.persistencia.FabricaMySQL";
-		String nomFab = null;
-		Properties p = new Properties();
-		String nomArchivo = "config/datos.properties";
-
-		try {
-			p.load(new FileInputStream(nomArchivo));
-			nomFab = p.getProperty("nomfab");
-			FabricaAbstracta fabrica = (FabricaAbstracta) Class.forName(nomFab).getDeclaredConstructor().newInstance();
-			dicDuenios = fabrica.crearIDAODuenios();
-			pool = fabrica.crearIPoolConexiones();
-		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
-				| NoSuchMethodException | SecurityException | ClassNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new PersistenciaException("error de acceso a datos");
-		}
+		FabricaAbstracta fabrica = Fabrica.getInstance().getFabrica();
+		dicDuenios = fabrica.crearIDAODuenios();
+		pool = fabrica.crearIPoolConexiones();
 	}
 
 	public void nuevoDuenio(VODuenio voD) throws PersistenciaException, DuenioException {
