@@ -1,0 +1,101 @@
+37678733,Roco,Pastor Aleman
+43952501,Sammy,Beagle
+25135193,Lolo,Beagle
+17472814,Loky,Labrador
+33163112,Mico,Fox Terrier
+19867598,Chispa,Pinscher miniatura
+31685471,Rayo,Chiuahua
+16714370,Chiqui,Bichón Maltés
+12550102,Lola,Bulldog Frances
+30055764,George,Pastor ovejero Australiano
+11858466,Luna,Schnauzer miniatura
+27252163,Coco,Beagle
+20034772,Linda,Bulldog Frances
+31900508,Luna,Golden
+17686243,Toby,Cocker spaniel inglés
+36668466,Simba,Mudi
+33926312,Nina,Pastor Aleman
+31618369,Max,Fox Terrier
+11335963,Bruno,Mastin Napolitano
+19100651,Kira,Pastor ovejero Australiano
+41653745,Rex,Pastor Aleman
+7924740,Zeus,Border collie
+14166733,Sultan,Boxer
+33506603,Chimuelo,Bulldog Ingles
+19767176,Nala,Beagle
+27362265,Lobo,Setter
+19356262,Donut,Akita
+42768688,Tina,Caniche
+16952867,Goku,Gran Danes
+19574399,Bart,Beagle
+27547887,Pluto,Border collie
+18388600,Bender,Mudi
+28013463,Tormenta,Akita
+15181138,Krasty,Fox Terrier
+37754272,Dexter,Mastin Napolitano
+26368575,Lala,Pastor ovejero Australiano
+10746531,Ragnar,Boyero de Berna
+38439964,Coco,Dachshund
+13135068,George,Pastor Aleman
+39467201,Balto,Husky
+17991775,Odie,Caniche
+19987110,Snoopy,Pug
+32804478,Slinky,Jack Russell
+16903537,Toto,Gran Danes
+19399852,Marley,Golden
+28262195,Bolt,Labrador
+29837365,Golfo,Fox Terrier
+13960035,Pongo,Husky
+5790545,Beethoven,San Bernardo
+10448721,Hachiko,Akita
+30450449,Benji,Caniche
+44780101,Clifford,Beagle
+15732628,Astro,Pastor Aleman
+35445651,Chip,Pug
+33418254,EinsDachshundten,Labrador
+35704601,Baloo,Labrador
+13159662,Fang,Mastin Napolitano
+40975170,Milo,Beagle
+10650685,Cometa,San Bernardo
+12445301,Huesos,Bulldog Frances
+15863087,Capitan,Pastor Aleman
+27692442,Simon,Fox Terrier
+12333994,Estrella,Husky
+29548902,Sol,Dachshund
+12013992,Pepe,Gran Danes
+42229094,Pancho,Beagle
+32930376,Tito,Chiuaua
+47676391,Lorenzo,Husky
+18379786,Fantasma,Boyero de Berna
+10675716,Lisa,Bulldog Frances
+12754033,Patan,Gran Danes
+44024149,Maya,Beagle
+36853592,Noel,Jack Russell
+40652972,Bolita,Akita
+33631444,Capi,Bull Terrier
+16318293,Firulais,Labrador
+19054741,Joy,San Bernardo
+13133907,Cacao,Labrador
+29282471,Pitufo,Husky
+27782980,Oreo,Border Collie
+32268890,Dientes,Golden
+18484292,Oto,Golden
+9844605,Lucas,Pastor Aleman
+9096583,Nono,Pug
+14566634,Paloma,Boxer
+14893201,Pepa,Pastor Aleman
+25464730,Curro,Fila
+18612651,Paco,Bulldog Ingles
+39749259,Lalo,San Bernardo
+40718465,Silver,Husky
+37782499,Max,Husky
+37782499,Bonbom,Husky
+38505955,Bobby,Beagle
+13995551,Billy,Fox Terrier
+18036946,Fox,Pastor Aleman
+10124557,Dick,Jack Russell
+6827636,Cooper,Fila
+16075362,Boss,Chiuaua
+9046663,Hugo,Boxer
+18688242,Sara,Bulldog Frances
+19948253,Bruce,Akita
