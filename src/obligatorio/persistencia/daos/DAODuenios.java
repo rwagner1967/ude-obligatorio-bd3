@@ -34,6 +34,7 @@ public class DAODuenios implements IDAODuenios {
 			if (rs.next())
 				existsDuenio = true;
 			rs.close();
+			rs=null;
 			pstmt.close();
 			pstmt = null;
 		} catch (Exception e) {
@@ -41,6 +42,14 @@ public class DAODuenios implements IDAODuenios {
 			msg = "Error de acceso a los datos";
 			errorPersistencia = true;
 		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					errorPersistencia = true;
+					msg = "error de acceso a los datos";
+				}			
+			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -193,6 +202,7 @@ public class DAODuenios implements IDAODuenios {
 				duenios.add(voD);
 			}
 			rs.close();
+			rs = null;
 			stmt.close();
 			stmt = null;
 		} catch (Exception e) {
@@ -201,6 +211,14 @@ public class DAODuenios implements IDAODuenios {
 			msg = "Error de acceso a los datos";
 			errorPersistencia = true;
 		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					errorPersistencia = true;
+					msg = "error de acceso a los datos";
+				}		
+			}
 			if (stmt != null) {
 				try {
 					stmt.close();

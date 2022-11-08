@@ -203,6 +203,7 @@ public class Fachada {
 		boolean existsCed = false;
 		VOMascota voM = null;
 		boolean errorPersistencia = false;
+		boolean mascotaRegistrada = true;
 
 		try {
 			icon = pool.obtenerConexion(true);
@@ -218,6 +219,17 @@ public class Fachada {
 			e.printStackTrace();
 			errorPersistencia = true;
 			msg = e.getMessage();
+		} catch (MascotaRegistradaException e) {
+			e.printStackTrace();
+			msg = e.getMessage();
+			mascotaRegistrada = false;
+			try {
+				pool.liberarConexion(icon, false);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+				errorPersistencia=true;
+				msg="error de acceso a los datos";
+			}
 		} finally {
 			if (errorPersistencia) {
 				try {
@@ -229,6 +241,9 @@ public class Fachada {
 			}
 			if (!existsCed)
 				throw new DuenioException(msg);
+			if (!mascotaRegistrada) {
+				throw new MascotaRegistradaException(msg);
+			}
 		}
 
 		return voM;
