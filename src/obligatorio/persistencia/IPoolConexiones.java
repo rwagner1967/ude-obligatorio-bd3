@@ -1,8 +1,8 @@
 package obligatorio.persistencia;
 
-import java.sql.SQLException;
+import obligatorio.logica.excepciones.PersistenciaException;
 
 public interface IPoolConexiones {
-	public IConexion obtenerConexion(boolean ok) throws SQLException, InterruptedException;
-	public void liberarConexion(IConexion con, boolean ok) throws SQLException;
+	public IConexion obtenerConexion(boolean ok) throws PersistenciaException;
+	public void liberarConexion(IConexion con, boolean ok) throws PersistenciaException;
 }

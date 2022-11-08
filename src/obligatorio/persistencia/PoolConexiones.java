@@ -44,40 +44,50 @@ public class PoolConexiones implements IPoolConexiones {
 	}
 
 	@Override
-	public synchronized IConexion obtenerConexion(boolean ok) throws SQLException, InterruptedException {
+	public synchronized IConexion obtenerConexion(boolean ok) throws PersistenciaException {
 		Conexion con = null;
 		boolean fin = false;
 
-		while (!fin) {
-			if (tope > 0) {
-				con = conexiones[tope - 1];
-				tope--;
-				fin = true;
-			} else if (creadas < MAX_CANT_CONEXIONES) {
-				Connection c = null;
-				c = DriverManager.getConnection(url, user, password);
-				con = new Conexion(c);
-				creadas++;
-				fin=true;
-			} else {
-				wait();
+		try {
+			while (!fin) {
+				if (tope > 0) {
+					con = conexiones[tope - 1];
+					tope--;
+					fin = true;
+				} else if (creadas < MAX_CANT_CONEXIONES) {
+					Connection c = null;
+					c = DriverManager.getConnection(url, user, password);
+					con = new Conexion(c);
+					creadas++;
+					fin = true;
+				} else {
+					wait();
+				}
 			}
+			con.getConnection().setTransactionIsolation(nivelTransaccionalidad);
+			con.getConnection().setAutoCommit(false);
+		} catch (SQLException | InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new PersistenciaException("error de acceso a los datos");
 		}
-		con.getConnection().setTransactionIsolation(nivelTransaccionalidad);
-		con.getConnection().setAutoCommit(false);
 		return con;
 	}
 
 	@Override
-	public synchronized void liberarConexion(IConexion con, boolean ok) throws SQLException {
-		if (ok) {
-			((Conexion) con).getConnection().commit();
+	public synchronized void liberarConexion(IConexion con, boolean ok) throws PersistenciaException {
+		try {
+			if (ok) {
+				((Conexion) con).getConnection().commit();
+			} else {
+				((Conexion) con).getConnection().rollback();
+			}
+			conexiones[tope] = (Conexion) con;
+			tope++;
+			notify();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PersistenciaException("error de acceso a los datos");
 		}
-		else {
-			((Conexion) con).getConnection().rollback();
-		}
-		conexiones[tope] = (Conexion) con;
-		tope++;
-		notify();
 	}
 }

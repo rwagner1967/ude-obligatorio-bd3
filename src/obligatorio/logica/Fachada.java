@@ -1,6 +1,5 @@
 package obligatorio.logica;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import obligatorio.logica.excepciones.DuenioException;
@@ -46,7 +45,7 @@ public class Fachada {
 			if (errorPersistencia) {
 				try {
 					pool.liberarConexion(icon, false);
-				} catch (SQLException e) {
+				} catch (PersistenciaException e) {
 					e.printStackTrace();
 					errorPersistencia = true;
 					msg = "error de acceso a los datos";
@@ -75,7 +74,7 @@ public class Fachada {
 				msg = "No existe Dueño";
 			}
 			pool.liberarConexion(icon, true);
-		} catch (PersistenciaException | SQLException | InterruptedException e) {
+		} catch (PersistenciaException e) {
 			e.printStackTrace();
 			errorPersistencia = true;
 			msg = e.getMessage();
@@ -83,7 +82,7 @@ public class Fachada {
 			if (errorPersistencia) {
 				try {
 					pool.liberarConexion(icon, false);
-				} catch (SQLException e) {
+				} catch (PersistenciaException e) {
 					e.printStackTrace();
 					errorPersistencia = true;
 					msg = "error de acceso a los datos";
@@ -119,7 +118,7 @@ public class Fachada {
 			if (errorPersistencia) {
 				try {
 					pool.liberarConexion(icon, false);
-				} catch (SQLException e) {
+				} catch (PersistenciaException e) {
 					e.printStackTrace();
 					errorPersistencia = true;
 					msg = "error de acceso a los datos";
@@ -141,7 +140,7 @@ public class Fachada {
 			icon = pool.obtenerConexion(true);
 			duenios = dicDuenios.listarDuenios(icon);
 			pool.liberarConexion(icon, true);
-		} catch (SQLException | InterruptedException e) {
+		} catch (PersistenciaException e) {
 			e.printStackTrace();
 			errorPersistencia = true;
 			msg = "error de acceso a los datos";
@@ -149,7 +148,7 @@ public class Fachada {
 			if (errorPersistencia) {
 				try {
 					pool.liberarConexion(icon, false);
-				} catch (SQLException e) {
+				} catch (PersistenciaException e) {
 					e.printStackTrace();
 					errorPersistencia = true;
 					msg = "error de acceso a los datos";
@@ -177,7 +176,7 @@ public class Fachada {
 				msg = "No existe Dueño";
 			}
 			pool.liberarConexion(icon, true);
-		} catch (PersistenciaException | SQLException | InterruptedException e) {
+		} catch (PersistenciaException e) {
 			e.printStackTrace();
 			errorPersistencia = true;
 			msg = e.getMessage();
@@ -185,7 +184,7 @@ public class Fachada {
 			if (errorPersistencia) {
 				try {
 					pool.liberarConexion(icon, false);
-				} catch (SQLException e) {
+				} catch (PersistenciaException e) {
 					e.printStackTrace();
 				}
 				throw new PersistenciaException(msg);
@@ -215,7 +214,7 @@ public class Fachada {
 				msg = "No existe Dueño";
 			}
 			pool.liberarConexion(icon, true);
-		} catch (SQLException | InterruptedException e) {
+		} catch (PersistenciaException e) {
 			e.printStackTrace();
 			errorPersistencia = true;
 			msg = e.getMessage();
@@ -225,7 +224,7 @@ public class Fachada {
 			mascotaRegistrada = false;
 			try {
 				pool.liberarConexion(icon, false);
-			} catch (SQLException e1) {
+			} catch (PersistenciaException e1) {
 				e1.printStackTrace();
 				errorPersistencia=true;
 				msg="error de acceso a los datos";
@@ -234,7 +233,7 @@ public class Fachada {
 			if (errorPersistencia) {
 				try {
 					pool.liberarConexion(icon, false);
-				} catch (SQLException e) {
+				} catch (PersistenciaException e) {
 					e.printStackTrace();
 				}
 				throw new PersistenciaException(msg);
@@ -266,7 +265,7 @@ public class Fachada {
 				msg = "No existe Dueño";
 			}
 			pool.liberarConexion(icon, true);
-		} catch (SQLException | InterruptedException e) {
+		} catch (PersistenciaException e) {
 			e.printStackTrace();
 			errorPersistencia = true;
 			msg = e.getMessage();
@@ -274,7 +273,7 @@ public class Fachada {
 			if (errorPersistencia) {
 				try {
 					pool.liberarConexion(icon, false);
-				} catch (SQLException e) {
+				} catch (PersistenciaException e) {
 					e.printStackTrace();
 				}
 				throw new PersistenciaException(msg);

@@ -1,13 +1,11 @@
 package obligatorio.persistencia;
 
-import java.sql.SQLException;
-
 public class PoolConexionesArchivo implements IPoolConexiones {
 	private int cantidadDeLectores = 0;
 	private boolean escribiendo = false;
 
 	@Override
-	public synchronized IConexion obtenerConexion(boolean ok) throws SQLException, InterruptedException {
+	public synchronized IConexion obtenerConexion(boolean ok) {
 
 		IConexion con = new ConexionArchivo(ok);
 		if (ok) { //lectores
@@ -32,7 +30,7 @@ public class PoolConexionesArchivo implements IPoolConexiones {
 	}
 
 	@Override
-	public synchronized void liberarConexion(IConexion icon, boolean ok) throws SQLException {
+	public synchronized void liberarConexion(IConexion icon, boolean ok) {
 		ConexionArchivo con = (ConexionArchivo) icon;
 		if (con.esLectura()) {
 			cantidadDeLectores--;
