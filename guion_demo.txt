@@ -1,0 +1,95 @@
+Levantar la base de datos.
+Borrar los datos.
+
+PRUEBA CON BASE DE DATOS.
+
+Verificar que el parámetro nomfab tenga el valor obligatorio.persistencia.FabricaMySQL en el archivo de configuración datos.properties
+
+
+Iniciar Servidor.
+
+java -jar servidor.jar
+
+
+Cargar datos:
+
+1. Mostrar que no hay datos de dueños ni de mascotas.
+
+2. Cargar dueños.
+   
+   java -jar cargarDatosDuenios.jar
+
+3. Cargar Mascotas.
+
+   java -jar cargarDatosMascotas.jar
+
+4. Mostrar que los datos se cargaron
+
+Ejecutar interface gráfica.
+
+java -jar gui.jar
+
+
+Pruebas:
+
+1. listar Dueños.
+
+2. listar mascotas de 37782499 (2 mascotas)
+
+3. listar mascotas de 28013463 (1 mascota)
+
+4. listar mascotas de 14874061 (ninguna mascota)
+
+5. listar mascotas con una cedula que no exista 19358583
+
+6. obtener mascota 37782499 1
+
+7. obtener mascota 37782499 2
+
+8. obtener mascota 37782499 3 (no hay registro)
+
+9. obtener mascota 28013463 1
+
+10. obtener mascota 19358583 1
+
+11. contar mascotas  37782499 Husky (resultado 2)
+
+12. contar mascotas 37782499 Beagle (resultado 0)
+
+13. borrar 37782499
+
+14. borrar 37782499 (no existe)
+
+15. nuevo dueño 19358583  MIGUEL RODRIGUEZ
+
+16. nueva mascota 19358583 Sammy Beagle
+
+17. nueva mascota 19358583 Rocky Bulldog Frances
+
+18. nueva mascota 19358583 Paz Bulldog Frances
+
+19. listar mascotas de 19358583
+
+20. obtener mascota 19358583 1
+
+21. obtener mascota 19358583 2
+
+22. obtener mascota 19358583 3
+
+23. obtener mascota 19358583 4
+
+24. contar mascotas 19358583 Bulldog Frances
+
+25. contar mascotas 19358583 Beagle
+
+26. contar mascotas 19358583 Husky
+
+27. borrar dueño 14874061
+
+-------------
+
+Detener servidor
+
+Cambiar fabrica FabricaArchivo
+
+Repetir prueba.

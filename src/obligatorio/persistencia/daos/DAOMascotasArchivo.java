@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -159,6 +160,8 @@ public class DAOMascotasArchivo implements IDAOMascotas {
 		Path path = (Path) FileSystems.getDefault().getPath(nomArch);
 		try {
 			Files.delete((Path) path);
+		} catch (NoSuchFileException e) {
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new PersistenciaException("error de acceso a los datos");
